@@ -1,0 +1,12 @@
+    <table class="table table-hover">
+        <tr>
+            
+	    <td>
+                {% set thread_link %}
+                        <a href="{{ url_for('main.thread', title=thread.title) }}">{{ thread.title }}</a>
+                {% endset %}
+                {{ _('%(title)s', title=thread_link) }}
+                
+            </td>
+        </tr>
+    </table>

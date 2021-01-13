@@ -1,0 +1,15 @@
+    <table class="table table-hover">
+        <tr>
+            
+	    <td>
+                {% set board_link %}
+                        <a href="{{ url_for('main.board', title=board.title) }}">{{ board.title }}</a>
+                {% endset %}
+                {{ _('%(title)s',
+                    title=board_link) }}
+                <br>
+                <span id="board{{ board.id }}">{{ board.body }}</span>
+                
+            </td>
+        </tr>
+    </table>

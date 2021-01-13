@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% import 'bootstrap/wtf.html' as wtf %}
+
+{% block app_content %}
+    <h1>{{ _(' %(head)s', head=header_msg) }}</h1>
+    {% for board in boards %}
+        {% include '_board.html' %}
+    {% endfor %}
+{% endblock %}
