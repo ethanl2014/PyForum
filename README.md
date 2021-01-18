@@ -5,7 +5,9 @@ Flask-based forum web app
 Can be viewed here: https://ethansforum.herokuapp.com/
 
 To run offline:
-'''
+
+'''''
+
 Clone repository and install requirements (I recommend using virtual environment)
 
 open command prompt and navigate to repository (cd here etc.) ("open" venv if using)
@@ -13,10 +15,12 @@ open command prompt and navigate to repository (cd here etc.) ("open" venv if us
 set FLASK_APP=forum.py
 
 flask run
-'''
+
+'''''
 
 To run your own on heroku:
-'''
+
+'''''
 
 Create heroku account and install the CLI from heroku website
 
@@ -64,4 +68,4 @@ heroku config:set ELASTICSEARCH_URL={whatever url the above command gave you, no
 	
   heroku open
   
-'''
+'''''
