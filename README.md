@@ -61,7 +61,7 @@ To run your own on heroku:
    replacing localhost:9200 with the elasticsearch url from above
     
    (this is necessary because normal elasticsearch will auto create an index if there isn't one, but searchbox will not. If you get an error along the lines of "no post index" when   
-    searching, look up this step
+    searching, look up this step)
 
 17) Heroku config:set FLASK_APP=forum.py
   
