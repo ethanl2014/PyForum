@@ -20,7 +20,7 @@ class EditProfileForm(FlaskForm):
     about_me = TextAreaField(_l('About me'),
                              validators=[Length(min=0, max=140)])
     
-    avatar_pic = FileField('Update Avatar', validators=[FileAllowed(['jpg', 'png'])])
+    #avatar_pic = FileField('Update Avatar', validators=[FileAllowed(['jpg', 'png'])])
     
     submit = SubmitField(_l('Submit'))
 

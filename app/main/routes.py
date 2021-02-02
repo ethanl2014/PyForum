@@ -8,11 +8,11 @@ from app.main.forms import EditProfileForm, EmptyForm, PostForm, SearchForm, \
     MessageForm, CreateThreadForm
 from app.models import User, Post, Message, Notification, Board, Thread
 from app.main import bp
-import os
-from PIL import Image
-import inspect
-import random, string
-import app.models
+#import os
+#from PIL import Image
+#import inspect
+#import random, string
+#import app.models
 
 @bp.before_app_request
 def before_request():
@@ -21,18 +21,19 @@ def before_request():
         db.session.commit()
     g.search_form = SearchForm()
     g.locale = str(get_locale())
-    
-def pic_name(pic_form):
-    pic_random = ''.join(random.choices(string.ascii_letters + string.digits, k=8))
-    _, f_ext = os.path.splitext(pic_form.filename)
-    picture_name = pic_random + f_ext
-    path_r = os.path.dirname(inspect.getfile(app.models))
-    picture_path = os.path.join(path_r, 'static/avatars', picture_name)
 
-    i = Image.open(pic_form)
-    i.save(picture_path)
+#shelving upload avatars for now due to ephemeral system of heroku    
+#def pic_name(pic_form):
+#    pic_random = ''.join(random.choices(string.ascii_letters + string.digits, k=8))
+#    _, f_ext = os.path.splitext(pic_form.filename)
+#    picture_name = pic_random + f_ext
+#    path_r = os.path.dirname(inspect.getfile(app.models))
+#    picture_path = os.path.join(path_r, 'static/avatars', picture_name)
 
-    return picture_name
+#    i = Image.open(pic_form)
+#    i.save(picture_path)
+
+#   return picture_name
     
 @bp.route('/')
 @bp.route('/index')
@@ -164,9 +165,9 @@ def edit_profile():
     if form.validate_on_submit():
         current_user.username = form.username.data
         current_user.about_me = form.about_me.data
-        if form.avatar_pic.data:
-            avatar_pic = pic_name(form.avatar_pic.data)
-            current_user.prof_pic = avatar_pic
+      #  if form.avatar_pic.data:
+      #      avatar_pic = pic_name(form.avatar_pic.data)
+      #      current_user.prof_pic = avatar_pic
         db.session.commit()
         flash(_('Your changes have been saved.'))
         return redirect(url_for('main.edit_profile'))
