@@ -7,6 +7,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 import jwt
 from app import db, login
 from app.search import add_to_index, remove_from_index, query_index
+from hashlib import md5
 
 class Board(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -97,7 +98,6 @@ class User(UserMixin, db.Model):
     posts = db.relationship('Post', backref='author', lazy='dynamic')
     about_me = db.Column(db.String(140))
     last_seen = db.Column(db.DateTime, default=datetime.utcnow)
-    prof_pic = db.Column(db.String(20), nullable=False, default='default.png')
     followed = db.relationship(
         'User', secondary=followers,
         primaryjoin=(followers.c.follower_id == id),
@@ -123,7 +123,8 @@ class User(UserMixin, db.Model):
         return check_password_hash(self.password_hash, password)
 
     def avatar(self):
-        return '../static/avatars/' + self.prof_pic
+        digest = md5(self.email.lower().encode('utf-8')).hexdigest()
+        return 'https://robohash.org/' + digest + '.png'
 
     def follow(self, user):
         if not self.is_following(user):
