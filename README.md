@@ -8,7 +8,7 @@ To run offline:
 
 '''''
 
-1) Clone repository and install requirements (I recommend using virtual environment)
+1) Clone repository and install requirements
 
 2) Open command prompt and navigate to repository (cd here etc.) ("open" venv if using)
 
